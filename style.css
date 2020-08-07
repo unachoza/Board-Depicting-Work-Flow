@@ -6,15 +6,15 @@ html {
 }
 
 :root {
-  --column-1: #a2622d;
-  --column-2: #1b6161;
-  --column-3: #248224;
-  --column-4: #a22d22;
+  --column-1: #7b4893;
+  --column-2: #0057ba;
+  --column-3: #1a5a00;
+  --column-4: #8d1f5c;
 }
 
 body {
   margin: 0;
-  background: url('./trees.jpg');
+  background: url('https://res.cloudinary.com/dh41vh9dx/image/upload/v1593185244/sergei-gavrilov-gbd6PqRqGms-unsplash.jpg');
   background-size: cover;
   background-position: 50% 60%;
   background-attachment: fixed;
