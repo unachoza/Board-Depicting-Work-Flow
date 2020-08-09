@@ -28,7 +28,7 @@ const getSavedColumnsFromLocalStorageOrSetDefault = () => {
     onHoldListArray = JSON.parse(localStorage.onHoldItems);
   } else {
     backlogListArray = ['Run 10K', 'Hem pants'];
-    progressListArray = ['Coding Functionality', 'Reading Pelosi Book'];
+    progressListArray = ['Code Functionality', 'Read AI Book'];
     completeListArray = ['Outline', 'Navigation'];
     onHoldListArray = ['Dinner Plans'];
   }
