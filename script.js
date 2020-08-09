@@ -92,83 +92,72 @@ const updateDOM = () => {
 };
 
 // Update Item - Delete if necessary, or update Array value
-function updateItem(id, column) {
+const updateItem = (id, column) => {
   const selectedArray = listArrays[column];
   const selectedColumn = listColumns[column].children;
   if (!dragging) {
-    if (!selectedColumn[id].textContent) {
-      delete selectedArray[id];
-    } else {
-      selectedArray[id] = selectedColumn[id].textContent;
-    }
+    !selectedColumn[id].textContent ? delete selectedArray[id] : (selectedArray[id] = selectedColumn[id].textContent);
     updateDOM();
   }
-}
+};
 
 // Add to Column List, Reset Textbox
-function addToColumn(column) {
+const addToColumn = (column) => {
   const itemText = addItems[column].textContent;
   const selectedArray = listArrays[column];
   selectedArray.push(itemText);
   addItems[column].textContent = '';
   updateDOM(column);
-}
+};
 
 // Show Add Item Input Box
-function showInputBox(column) {
+const showInputBox = (column) => {
   addBtns[column].style.visibility = 'hidden';
   saveItemBtns[column].style.display = 'flex';
   addItemContainers[column].style.display = 'flex';
-}
+};
 
 // Hide Item Input Box
-function hideInputBox(column) {
+const hideInputBox = (column) => {
   addBtns[column].style.visibility = 'visible';
   saveItemBtns[column].style.display = 'none';
   addItemContainers[column].style.display = 'none';
   addToColumn(column);
-}
+};
 
 // Allows arrays to reflect Drag and Drop items
 const rebuildArrays = () => {
   backlogListArray = Array.from(backlogListEl.children).map((i) => i.textContent);
   progressListArray = Array.from(progressListEl.children).map((i) => i.textContent);
   completeListArray = Array.from(completeListEl.children).map((i) => i.textContent);
-  onHoldListArraArray = Array.from(onHoldListEl.children).map((i) => i.textContent);
+  onHoldListArray = Array.from(onHoldListEl.children).map((i) => i.textContent);
   updateDOM();
 };
 
 // When Item Enters Column Area
-function dragEnter(column) {
+const dragEnter = (column) => {
   listColumns[column].classList.add('over');
   currentColumn = column;
-}
+};
 
 // When Item Starts Dragging
-function drag(e) {
+const drag = (e) => {
   draggedItem = e.target;
   dragging = true;
-}
+};
 
 // Column Allows for Item to Drop
-function allowDrop(e) {
-  e.preventDefault();
-}
+const allowDrop = (e) => e.preventDefault();
 
 // Dropping Item in Column
-function drop(e) {
+const drop = (e) => {
   e.preventDefault();
   const parent = listColumns[currentColumn];
-  // Remove Background Color/Padding
-  listColumns.forEach((column) => {
-    column.classList.remove('over');
-  });
-  // Add item to Column
+  listColumns.forEach((column) => column.classList.remove('over'));
   parent.appendChild(draggedItem);
-  // Dragging complete
   dragging = false;
   rebuildArrays();
-}
+};
 
 // On Load
 updateDOM();
