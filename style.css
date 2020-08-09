@@ -8,13 +8,27 @@ html {
   --column-3: #1a5a00;
   --column-4: #8d1f5c;
   --border-radius: 10px;
+  --primary-color: white;
+  --secondary-color: black;
+  --background: #f8f8f8de;
+  --background-url: url('https://res.cloudinary.com/dh41vh9dx/image/upload/v1593185244/sergei-gavrilov-gbd6PqRqGms-unsplash.jpg');
+  --background-opacity: rgba(0, 0, 0, 0.8);
+  --background-opacity-secondary: rgba(0, 0, 0, 0.4);
 }
 [data-theme='dark'] {
   --column-1: #eb7ff7;
   --column-2: #87b2f1;
   --column-3: #a2e083;
   --column-4: #ffaae1;
+  --primary-color: black;
+  --secondary-color: rgba(0, 0, 0, 0);
+  --background: rgba(1, 0, 0, 0.5);
+  --background-url: url('https://res.cloudinary.com/dh41vh9dx/image/upload/v1597015675/balletnoback.png');
+  --background-opacity: rgba(87, 84, 84, 0.4);
+  --background-opacity-secondary: rgba(168, 165, 165, 0.2);
 }
+/* .drag-item rgb(87 84 84 / 20%)
+.drag-column rgb(168 165 165 / 40%) */
 
 /* Dark Mode Toggle */
 .theme-switch-wrapper {
@@ -84,24 +98,40 @@ input:checked + .slider::before {
   font-size: 30px;
   margin-right: 5px;
 }
-
+nav {
+  padding: 10px 50px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 30px;
+  padding: 20px;
+}
+.nav-item {
+  display: flex;
+  padding: 5px;
+}
+i {
+  margin: 0px 5px;
+}
 body {
   margin: 0;
-  background: url('https://res.cloudinary.com/dh41vh9dx/image/upload/v1593185244/sergei-gavrilov-gbd6PqRqGms-unsplash.jpg');
+  background-color: var(--background);
+  background-image: var(--background-url);
   background-size: cover;
   background-position: 50% 60%;
   background-attachment: fixed;
-  color: white;
+  color: var(--primary-color);
   font-family: 'Recursive', sans-serif;
   overflow-y: hidden;
 }
 
 h1 {
   letter-spacing: 2px;
-  text-shadow: 2px 2px 5px black;
+  text-shadow: 2px 2px 5px var(--secondary-color);
+  /* color: var(--primary-color); */
 }
 
 .main-title {
+  margin: 0 auto;
   text-align: center;
   font-size: 3rem;
 }
@@ -126,7 +156,7 @@ ul {
   flex: 1;
   margin: 0 10px;
   position: relative;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: var(--background-opacity-secondary);
   border-radius: var(--border-radius);
   overflow-x: hidden;
 }
@@ -206,7 +236,7 @@ ul {
   margin: 10px;
   padding: 10px;
   height: fit-content;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: var(--background-opacity);
   border-radius: var(--border-radius);
   line-height: 1.5rem;
   letter-spacing: 1px;
@@ -215,8 +245,8 @@ ul {
 
 .drag-item:focus {
   outline: none;
-  background-color: white;
-  color: black;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
 }
 
 /* Add Button Group */
@@ -239,7 +269,7 @@ ul {
 
 .add-btn:hover {
   background-color: rgba(255, 255, 255, 0.9);
-  color: black;
+  color: var(--secondary-color);
 }
 
 .add-btn:active {
@@ -253,7 +283,7 @@ ul {
 .solid:hover {
   transition: unset;
   filter: brightness(95%);
-  color: white;
+  color: var(--primary-color);
 }
 .plus-sign {
   font-size: 1.5rem;
@@ -273,11 +303,11 @@ ul {
   width: 100%;
   min-height: 100px;
   height: auto;
-  background-color: white;
+  background-color: var(--primary-color);
   border-radius: var(--border-radius);
   margin: 5px auto;
   resize: none;
-  color: black;
+  color: var(--secondary-color);
   padding: 10px;
 }
 .add-item:focus {
