@@ -9,11 +9,24 @@
       type="image/png"
       href="https://res.cloudinary.com/dh41vh9dx/image/upload/v1596749556/chart-favicon-32x32.png"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Recursive:wght@300;400&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1 class="main-title">WorkFlow Dashboard</h1>
+    <nav>
+      <h1 class="main-title">WorkFlow Dashboard</h1>
+      <div class="theme-switch-wrapper">
+        <span id="toggle-icon">
+          <i class="fas fa-sun"></i>
+        </span>
+        <label class="theme-switch">
+          <input type="checkbox" />
+          <div class="slider round"></div>
+        </label>
+      </div>
+    </nav>
+
     <div class="drag-container">
       <ul class="drag-list">
         <!-- Backlog Column -->
