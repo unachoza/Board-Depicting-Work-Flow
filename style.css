@@ -10,6 +10,7 @@ html {
   --column-2: #0057ba;
   --column-3: #1a5a00;
   --column-4: #8d1f5c;
+  --border-radius: 10px;
 }
 
 body {
@@ -54,7 +55,7 @@ ul {
   margin: 0 10px;
   position: relative;
   background-color: rgba(0, 0, 0, 0.4);
-  border-radius: 10px;
+  border-radius: var(--border-radius);
   overflow-x: hidden;
 }
 
@@ -94,7 +95,7 @@ ul {
 
 .custom-scroll::-webkit-scrollbar-track {
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.4);
-  border-radius: 10px;
+  border-radius: var(--border-radius);
   background-color: rgba(255, 255, 255, 0.3);
   margin-right: 5px;
 }
@@ -104,7 +105,7 @@ ul {
 }
 
 .custom-scroll::-webkit-scrollbar-thumb {
-  border-radius: 10px;
+  border-radius: var(--border-radius);
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   background-color: rgba(0, 0, 0, 0.8);
 }
@@ -112,7 +113,7 @@ ul {
 .header {
   display: flex;
   justify-content: center;
-  border-radius: 10px;
+  border-radius: var(--border-radius);
   margin: 10px;
 }
 
@@ -134,7 +135,7 @@ ul {
   padding: 10px;
   height: fit-content;
   background-color: rgba(0, 0, 0, 0.8);
-  border-radius: 10px;
+  border-radius: var(--border-radius);
   line-height: 1.5rem;
   letter-spacing: 1px;
   cursor: pointer;
@@ -182,35 +183,31 @@ ul {
   filter: brightness(95%);
   color: white;
 }
-
 .plus-sign {
   font-size: 1.5rem;
   margin-right: 5px;
   position: relative;
   top: -3px;
 }
-
 .add-container {
   margin: 10px;
   padding: 5px 10px;
-  border-radius: 10px;
+  border-radius: var(--border-radius);
   background-color: rgba(255, 255, 255, 0.9);
   min-height: 100px;
   display: none;
 }
-
 .add-item {
   width: 100%;
   min-height: 100px;
   height: auto;
   background-color: white;
-  border-radius: 10px;
+  border-radius: var(--border-radius);
   margin: 5px auto;
   resize: none;
   color: black;
   padding: 10px;
 }
-
 .add-item:focus {
   outline: none;
 }
@@ -221,26 +218,6 @@ ul {
     font-size: 2rem;
   }
 }
-
-/* Media Query: Large Smartphone (Vertical) */
-@media screen and (max-width: 600px) {
-  body {
-    overflow-y: auto;
-  }
-
-  .drag-container {
-    margin: 0;
-  }
-
-  .drag-list {
-    display: block;
-  }
-
-  .drag-column {
-    margin: 10px;
-  }
-}
-
 @media screen and (max-width: 1050px) {
   h1 {
     letter-spacing: 0;
@@ -248,6 +225,47 @@ ul {
   }
   .header h1 {
     letter-spacing: 0;
+    font-size: 1rem;
+  }
+  li {
+    font-size: 0.8rem;
+  }
+  .drag-column {
+    margin: 0 6px;
+  }
+  .drag-item {
+    margin: 8px;
+  }
+}
+@media screen and (max-width: 800px) {
+  :root {
+    --border-radius: 4px;
+  }
+  .header h1 {
+    font-size: 0.9rem;
+  }
+  li {
+    font-size: 0.7rem;
+  }
+}
+@media screen and (max-width: 600px) {
+  body {
+    overflow-y: auto;
+  }
+  .drag-container {
+    margin: 0;
+  }
+  .drag-list {
+    display: block;
+  }
+  .drag-column {
+    margin: 10px;
+  }
+  h1 {
+    letter-spacing: 1px;
+    font-size: 1rem;
+  }
+  .header h1 {
     font-size: 1rem;
   }
   li {

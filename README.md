@@ -8,3 +8,9 @@ Features include adding items to column, editing items, and deleting items. Item
 
 - updating order of items in column
 - light / dark mode
+
+### Code Snipet
+
+> backlogListArray = Array.from(backlogListElement.children).map((i) => i.textContent);
+>
+> In this example, HTMLcollection is an array like object, using Array.from() converts it > to an array then makes functions like map() and forEach() accessible
