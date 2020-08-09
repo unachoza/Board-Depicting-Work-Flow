@@ -4,10 +4,10 @@ const addItemContainers = document.querySelectorAll('.add-container');
 const addItems = document.querySelectorAll('.add-item');
 // Item Lists
 const listColumns = document.querySelectorAll('.drag-item-list');
-const backlogListEl = document.getElementById('backlog-list');
-const progressListEl = document.getElementById('progress-list');
-const completeListEl = document.getElementById('complete-list');
-const onHoldListEl = document.getElementById('on-hold-list');
+const backlogListElement = document.getElementById('backlog-list');
+const progressListElement = document.getElementById('progress-list');
+const completeListElement = document.getElementById('complete-list');
+const onHoldListElement = document.getElementById('on-hold-list');
 
 // Items
 let updatedOnLoad = false;
@@ -24,8 +24,7 @@ let draggedItem;
 let dragging = false;
 let currentColumn;
 
-// Get Arrays from localStorage if available, set default values if not
-const getSavedColumns = () => {
+const getSavedColumnsFromLocalStorageOrSetDefault = () => {
   if (localStorage.getItem('backlogItems')) {
     backlogListArray = JSON.parse(localStorage.backlogItems);
     progressListArray = JSON.parse(localStorage.progressItems);
@@ -39,8 +38,7 @@ const getSavedColumns = () => {
   }
 };
 
-// Set localStorage Arrays
-const updateSavedColumns = () => {
+const updateSavedColumnsInLocalStorage = () => {
   listArrays = [backlogListArray, progressListArray, completeListArray, onHoldListArray];
   const arrayNames = ['backlog', 'progress', 'complete', 'onHold'];
   arrayNames.forEach((arrayName, index) => {
@@ -48,47 +46,44 @@ const updateSavedColumns = () => {
   });
 };
 
-// Filter Array to remove empty values
-const filterArray = (array) => (filteredArray = array.filter((item) => item !== null));
+const removeEmptyValues = (array) => (filteredArray = array.filter((item) => item !== null));
 
 // Create DOM Elements for each list item
-const createItemEl = (columnEl, column, item, index) => {
-  // List Item
-  const listEl = document.createElement('li');
-  listEl.textContent = item;
-  listEl.id = index;
-  listEl.classList.add('drag-item');
-  listEl.draggable = true;
-  listEl.setAttribute('onfocusout', `updateItem(${index}, ${column})`);
-  listEl.setAttribute('ondragstart', 'drag(event)');
-  listEl.contentEditable = true;
-  // Append
-  columnEl.appendChild(listEl);
+const createItemElements = (columnElement, column, item, index) => {
+  const listElement = document.createElement('li');
+  listElement.textContent = item;
+  listElement.id = index;
+  listElement.classList.add('drag-item');
+  listElement.draggable = true;
+  listElement.setAttribute('onfocusout', `updateItem(${index}, ${column})`);
+  listElement.setAttribute('ondragstart', 'drag(event)');
+  listElement.contentEditable = true;
+  columnElement.appendChild(listElement);
 };
 
 // Update Columns in DOM - Reset HTML, Filter Array, Update localStorage
 const updateDOM = () => {
   // Check localStorage once
-  if (!updatedOnLoad) getSavedColumns();
+  if (!updatedOnLoad) getSavedColumnsFromLocalStorageOrSetDefault();
   // Backlog Column
-  backlogListEl.textContent = '';
-  backlogListArray.forEach((backlogItem, index) => createItemEl(backlogListEl, 0, backlogItem, index));
-  backlogListArray = filterArray(backlogListArray);
+  backlogListElement.textContent = '';
+  backlogListArray.forEach((backlogItem, index) => createItemElements(backlogListElement, 0, backlogItem, index));
+  backlogListArray = removeEmptyValues(backlogListArray);
   // Progress Column
-  progressListEl.textContent = '';
-  progressListArray.forEach((progressItem, index) => createItemEl(progressListEl, 1, progressItem, index));
-  progressListArray = filterArray(progressListArray);
+  progressListElement.textContent = '';
+  progressListArray.forEach((progressItem, index) => createItemElements(progressListElement, 1, progressItem, index));
+  progressListArray = removeEmptyValues(progressListArray);
   // Complete Column
-  completeListEl.textContent = '';
-  completeListArray.forEach((completeItem, index) => createItemEl(completeListEl, 2, completeItem, index));
-  completeListArray = filterArray(completeListArray);
+  completeListElement.textContent = '';
+  completeListArray.forEach((completeItem, index) => createItemElements(completeListElement, 2, completeItem, index));
+  completeListArray = removeEmptyValues(completeListArray);
   // On Hold Column
-  onHoldListEl.textContent = '';
-  onHoldListArray.forEach((onHoldItem, index) => createItemEl(onHoldListEl, 3, onHoldItem, index));
-  onHoldListArray = filterArray(onHoldListArray);
+  onHoldListElement.textContent = '';
+  onHoldListArray.forEach((onHoldItem, index) => createItemElements(onHoldListElement, 3, onHoldItem, index));
+  onHoldListArray = removeEmptyValues(onHoldListArray);
   // Don't run more than once, Update Local Storage
   updatedOnLoad = true;
-  updateSavedColumns();
+  updateSavedColumnsInLocalStorage();
 };
 
 // Update Item - Delete if necessary, or update Array value
@@ -127,10 +122,10 @@ const hideInputBox = (column) => {
 
 // Allows arrays to reflect Drag and Drop items
 const rebuildArrays = () => {
-  backlogListArray = Array.from(backlogListEl.children).map((i) => i.textContent);
-  progressListArray = Array.from(progressListEl.children).map((i) => i.textContent);
-  completeListArray = Array.from(completeListEl.children).map((i) => i.textContent);
-  onHoldListArray = Array.from(onHoldListEl.children).map((i) => i.textContent);
+  backlogListArray = Array.from(backlogListElement.children).map((i) => i.textContent);
+  progressListArray = Array.from(progressListElement.children).map((i) => i.textContent);
+  completeListArray = Array.from(completeListElement.children).map((i) => i.textContent);
+  onHoldListArray = Array.from(onHoldListElement.children).map((i) => i.textContent);
   updateDOM();
 };
 
