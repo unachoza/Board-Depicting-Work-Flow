@@ -7,11 +7,4 @@ Features include adding items to column, editing items, and deleting items. Item
 ### Future Itterations
 
 - updating order of items in column
-
-# Process
-
-#### Code Snipet
-
-# Demo
-
-# Online Tools
+- light / dark mode
