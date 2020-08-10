@@ -245,8 +245,8 @@ ul {
 
 .drag-item:focus {
   outline: none;
-  background-color: var(--primary-color);
-  color: var(--secondary-color);
+  background-color: white;
+  color: black;
 }
 
 /* Add Button Group */
@@ -303,11 +303,11 @@ ul {
   width: 100%;
   min-height: 100px;
   height: auto;
-  background-color: var(--primary-color);
+  background-color: white;
   border-radius: var(--border-radius);
   margin: 5px auto;
   resize: none;
-  color: var(--secondary-color);
+  color: black;
   padding: 10px;
 }
 .add-item:focus {
