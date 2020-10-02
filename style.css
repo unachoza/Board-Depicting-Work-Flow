@@ -108,6 +108,7 @@ nav {
 .nav-item {
   display: flex;
   padding: 5px;
+  padding-right: 17px;
 }
 i {
   margin: 0px 5px;
@@ -132,6 +133,7 @@ h1 {
 
 .main-title {
   margin: 0 auto;
+  margin-left: 20px;
   text-align: center;
   font-size: 3rem;
 }
@@ -140,6 +142,9 @@ ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
+}
+a {
+  color: white;
 }
 
 .drag-container {
